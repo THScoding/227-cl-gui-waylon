@@ -44,6 +44,10 @@ def mSave():
 ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
 ping_btn.pack()
 
+# adds border to frame
+frame['borderwidth'] = 2
+frame['relief'] = 'sunken'
+
 # tracert button
 tracert_btn = tk.Button(frame, text="Tracert", command=lambda:do_command("tracert"))
 tracert_btn.pack()
