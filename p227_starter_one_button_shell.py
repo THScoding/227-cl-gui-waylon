@@ -27,8 +27,9 @@ def do_command(command):
             command_textbox.insert(tk.END,line)
             command_textbox.update()
 root = tk.Tk()
+root.geometry("500x300")
 frame = tk.Frame(root, width=50, height=100)
-frame.pack(side="left", padx=20, pady=20)
+frame.pack(side="left", padx=10, pady=20)
 
 # adds border to frame
 frame['borderwidth'] = 2
@@ -46,7 +47,7 @@ def mSave():
   file.close()
 
 # Makes the command button pass it's name to a function using lambda
-ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
+ping_btn = tk.Button(frame, text="Ping", command=lambda:do_command("ping"))
 ping_btn.pack()
 
 
@@ -63,7 +64,7 @@ frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
 frame_URL.pack()
 
 # decorative label
-url_label = tk.Label(frame_URL, text="Enter a URL of interest: ", 
+url_label = tk.Label(frame_URL, text="Enter URL: ", 
     compound="center",
     font=("comic sans", 14),
     bd=0, 
