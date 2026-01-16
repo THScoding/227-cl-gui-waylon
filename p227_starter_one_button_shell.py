@@ -8,6 +8,7 @@ from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
 
 
+
 def do_command(command):
     global command_textbox, url_entry
 
@@ -26,8 +27,12 @@ def do_command(command):
             command_textbox.insert(tk.END,line)
             command_textbox.update()
 root = tk.Tk()
-frame = tk.Frame(root)
-frame.pack()
+frame = tk.Frame(root, width=50, height=100)
+frame.pack(side="left", padx=20, pady=20)
+
+# adds border to frame
+frame['borderwidth'] = 2
+frame['relief'] = 'sunken'
 
 # Save function.
 def mSave():
@@ -44,9 +49,6 @@ def mSave():
 ping_btn = tk.Button(frame, text="Check to see if a URL is up and active", command=lambda:do_command("ping"))
 ping_btn.pack()
 
-# adds border to frame
-frame['borderwidth'] = 2
-frame['relief'] = 'sunken'
 
 # tracert button
 tracert_btn = tk.Button(frame, text="Tracert", command=lambda:do_command("tracert"))
