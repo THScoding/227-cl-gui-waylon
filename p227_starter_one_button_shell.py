@@ -60,8 +60,12 @@ nslookup_btn = tk.Button(frame, text="Nslookup", command=lambda:do_command("nslo
 nslookup_btn.pack()
 
 # creates the frame with label for the text box
-frame_URL = tk.Frame(root, pady=10,  bg="black") # change frame color
+frame_URL = tk.Frame(root, pady=10,) # change frame color
 frame_URL.pack()
+
+# border for url entry
+frame['borderwidth'] = 2
+frame['relief'] = 'sunken'
 
 # decorative label
 url_label = tk.Label(frame_URL, text="Enter URL: ", 
