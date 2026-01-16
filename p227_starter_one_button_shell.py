@@ -6,6 +6,7 @@ import tkinter as tk
 import tkinter.scrolledtext as tksc
 from tkinter import filedialog
 from tkinter.filedialog import asksaveasfilename
+from tkinter import ttk
 
 
 
@@ -58,6 +59,12 @@ tracert_btn.pack()
 # nslookup button
 nslookup_btn = tk.Button(frame, text="Nslookup", command=lambda:do_command("nslookup"))
 nslookup_btn.pack()
+
+# combo box
+
+combo = ttk.Combobox(root,values=["Ping", "Tracert", "Nslookup","Ping/Tracert","Ping/Nslookup","Tracert/Nslookup","Hide All"],state="readonly")
+combo.pack(padx=20, pady=20)
+
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,) # change frame color
