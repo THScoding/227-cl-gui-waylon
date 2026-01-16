@@ -36,6 +36,10 @@ frame.pack(side="left", padx=10, pady=20)
 frame['borderwidth'] = 2
 frame['relief'] = 'sunken'
 
+# save button
+save_btn = tk.Button(frame, text="Save", command=lambda:do_command("save"))
+save_btn.pack()
+
 # Save function.
 def mSave():
   filename = asksaveasfilename(defaultextension='.txt',filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
@@ -60,14 +64,13 @@ tracert_btn.pack()
 nslookup_btn = tk.Button(frame, text="Nslookup", command=lambda:do_command("nslookup"))
 nslookup_btn.pack()
 
-# combo box
-
+# combobox
 combo = ttk.Combobox(root,values=["Ping", "Tracert", "Nslookup","Ping/Tracert","Ping/Nslookup","Tracert/Nslookup","Hide All"],state="readonly")
 combo.pack(padx=20, pady=20)
 
 
 # creates the frame with label for the text box
-frame_URL = tk.Frame(root, pady=10,) # change frame color
+frame_URL = tk.Frame(root, pady=10,)
 frame_URL.pack()
 
 # border for url entry
