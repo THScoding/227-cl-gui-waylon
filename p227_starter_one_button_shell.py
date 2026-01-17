@@ -51,7 +51,6 @@ def mSave():
 # save button
 save_btn = tk.Button(frame, text="Save", command=mSave)
 save_btn.pack()
-
 # ping button
 ping_btn = tk.Button(frame, text="Ping", command=lambda:do_command("ping"))
 ping_btn.pack()
@@ -66,9 +65,47 @@ nslookup_btn = tk.Button(frame, text="Nslookup", command=lambda:do_command("nslo
 nslookup_btn.pack()
 
 # combobox
-combo = ttk.Combobox(root,values=["Ping", "Tracert", "Nslookup","Ping/Tracert","Ping/Nslookup","Tracert/Nslookup","Hide All"],state="readonly")
+def combo_select(event=None):
+    selection = combo.get()
+    
+    if selection == "Ping":
+        ping_btn.pack_forget()
+        tracert_btn.pack()
+        nslookup_btn.pack()
+    elif selection == "Tracert":
+        tracert_btn.pack_forget()
+        ping_btn.pack()
+        nslookup_btn.pack()
+    elif selection == "Nslookup":
+        nslookup_btn.pack_forget()
+        ping_btn.pack()
+        tracert_btn.pack()
+    elif selection == "Ping/Tracert":
+        ping_btn.pack_forget()
+        tracert_btn.pack_forget()
+        nslookup_btn.pack()
+    elif selection == "Ping/Nslookup":
+        ping_btn.pack_forget()
+        nslookup_btn.pack_forget()
+        tracert_btn.pack()
+    elif selection == "Tracert/Nslookup":
+        tracert_btn.pack_forget()
+        nslookup_btn.pack_forget()
+        ping_btn.pack()
+    elif selection == "Hide All":
+        ping_btn.pack_forget()
+        tracert_btn.pack_forget()
+        nslookup_btn.pack_forget()
+    elif selection == "Show All":
+        ping_btn.pack()
+        tracert_btn.pack()
+        nslookup_btn.pack()
+    
+    
+combo = ttk.Combobox(root,values=["Ping", "Tracert", "Nslookup","Ping/Tracert","Ping/Nslookup","Tracert/Nslookup","Hide All","Show All"],state="readonly")
 combo.pack(padx=20, pady=20)
 
+combo.bind("<<ComboboxSelected>>", combo_select)
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,)
