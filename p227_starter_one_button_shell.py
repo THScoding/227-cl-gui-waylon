@@ -28,7 +28,7 @@ def do_command(command):
             command_textbox.insert(tk.END,line)
             command_textbox.update()
 root = tk.Tk()
-root.geometry("500x300",)
+root.geometry("500x450")
 frame = tk.Frame(root, bg="black", width=70, height=100)
 frame.pack(side="left", padx=10, pady=20)
 
@@ -65,6 +65,11 @@ nslookup_btn = tk.Button(frame, text="Nslookup", command=lambda:do_command("nslo
 nslookup_btn.pack()
 
 # combobox
+frame_combobox = tk.Frame(root)
+frame_combobox.pack()
+combobox_label = tk.Label(frame_combobox, text="Hide Buttons:", bg="black", fg="white", font=("comic sans", 12))
+combobox_label.pack()
+
 def combo_select(event=None):
     selection = combo.get()
     
@@ -110,7 +115,7 @@ combo.bind("<<ComboboxSelected>>", combo_select)
 # scale for resizing text
 def resize_text_width(value):
     command_textbox.config(width=int(float(value)))
-text_width_scale = ttk.Scale(orient="horizontal", length=200, from_=1.0, to=100.0, command=resize_text_width)
+text_width_scale = ttk.Scale(orient="horizontal", length=50, from_=1.0, to=50.0, command=resize_text_width)
 text_width_scale.set(50)
 text_width_scale.pack(padx=10, pady=10)
 
@@ -131,7 +136,7 @@ url_label = tk.Label(frame_URL, text="Enter URL: ",
     fg="white",
     bg="black")
 url_label.pack(side=tk.LEFT)
-url_entry= tk.Entry(frame_URL,  font=("comic sans", 14)) # change font
+url_entry= tk.Entry(frame_URL,  font=("comic sans", 14))
 url_entry.pack(side=tk.LEFT)
 
 frame = tk.Frame(root,  bg="black") # change frame color
