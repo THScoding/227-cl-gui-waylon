@@ -28,21 +28,18 @@ def do_command(command):
             command_textbox.insert(tk.END,line)
             command_textbox.update()
 root = tk.Tk()
-root.geometry("500x300")
-frame = tk.Frame(root, width=50, height=100)
+root.geometry("500x300",)
+frame = tk.Frame(root, bg="black", width=70, height=100)
 frame.pack(side="left", padx=10, pady=20)
 
 # adds border to frame
 frame['borderwidth'] = 2
 frame['relief'] = 'sunken'
 
-# save button
-save_btn = tk.Button(frame, text="Save", command=lambda:do_command("save"))
-save_btn.pack()
 
 # Save function.
 def mSave():
-  filename = asksaveasfilename(defaultextension='.txt',filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
+  filename = asksaveasfilename(defaultextension='.txt', filetypes = (('Text files', '*.txt'),('Python files', '*.py *.pyw'),('All files', '*.*')))
   if filename is None:
     return
   file = open (filename, mode = 'w')
@@ -51,7 +48,11 @@ def mSave():
   file.write(text_to_save)
   file.close()
 
-# Makes the command button pass it's name to a function using lambda
+# save button
+save_btn = tk.Button(frame, text="Save", command=mSave)
+save_btn.pack()
+
+# ping button
 ping_btn = tk.Button(frame, text="Ping", command=lambda:do_command("ping"))
 ping_btn.pack()
 
