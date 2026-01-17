@@ -49,7 +49,7 @@ def mSave():
   file.close()
 
 # save button
-save_btn = tk.Button(frame, text="Save", command=mSave)
+save_btn = tk.Button(frame, text="Save Output", command=mSave)
 save_btn.pack()
 # ping button
 ping_btn = tk.Button(frame, text="Ping", command=lambda:do_command("ping"))
@@ -106,6 +106,13 @@ combo = ttk.Combobox(root,values=["Ping", "Tracert", "Nslookup","Ping/Tracert","
 combo.pack(padx=20, pady=20)
 
 combo.bind("<<ComboboxSelected>>", combo_select)
+
+# scale for resizing text
+def resize_text_width(value):
+    command_textbox.config(width=int(float(value)))
+text_width_scale = ttk.Scale(orient="horizontal", length=200, from_=1.0, to=100.0, command=resize_text_width)
+text_width_scale.set(50)
+text_width_scale.pack(padx=10, pady=10)
 
 # creates the frame with label for the text box
 frame_URL = tk.Frame(root, pady=10,)
